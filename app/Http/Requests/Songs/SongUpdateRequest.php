@@ -23,6 +23,7 @@ class SongUpdateRequest extends FormRequest
             'fast_subscription' => ['required', 'string', 'max:255'],
             'artist_id' => ['required', 'exists:artists,id'],
             'sim_id' => ['required', 'exists:sims,id'],
+            'is_active' => ['required', 'boolean'],
         ];
     }
 

@@ -99,7 +99,7 @@ import { Form } from "@inertiajs/svelte";
                         <th
                             scope="col"
                             class="px-6 py-3 font-semibold text-center"
-                            >الاشتراك السريع</th
+                            >العمليات</th
                         >
                     </tr>
                 </thead>

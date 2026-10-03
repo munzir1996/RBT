@@ -64,19 +64,25 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Song $song)
+    public function edit(string $id)
     {
+        $song = Song::findOrFail($id);
+
         return Inertia::render('Edit', [
-            'song' => $song
+            'song' => $song,
+            'artists' => Artist::all(),
+            'sims' => Sim::all()
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(SongUpdateRequest $songUpdateRequest, Song $song)
+    public function update(SongUpdateRequest $songUpdateRequest, string $id)
     {
         $validated = $songUpdateRequest->validated();
+
+        $song = Song::findOrFail($id);
 
         // Update the song using the validated data
         $song->update($validated);
@@ -88,8 +94,9 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Song $song)
+    public function destroy(string $id)
     {
+        $song = Song::findOrFail($id);
         $song->delete();
 
         // Redirect to the dashboard index page with a success message

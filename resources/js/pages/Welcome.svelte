@@ -3,7 +3,7 @@
     import AppHead from '@/components/AppHead.svelte';
     import { toUrl } from '@/lib/utils';
     import { index as dashboardIndex } from "@/routes/dashboard";
-    import { register } from '@/routes';
+    import { login, register } from '@/routes';
 
     const auth = $derived(page.props.auth);
 </script>

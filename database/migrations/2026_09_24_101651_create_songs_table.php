@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('link')->nullable();
             $table->text('subscription_detail')->nullable();
             $table->text('fast_subscription')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->foreignId('artist_id')->constrained()->onDelete('cascade');
             $table->foreignId('sim_id')->constrained()->onDelete('cascade');
             $table->timestamps();

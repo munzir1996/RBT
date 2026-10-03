@@ -20,6 +20,7 @@ import { store as dashboardStore } from '@/routes/dashboard';
 import { edit as dashboardEdit } from '@/routes/dashboard';
 import { destroy as dashboardDestroy } from '@/routes/dashboard';
 import { toUrl } from '@/lib/utils';
+import { Badge } from "@/components/ui/badge";
 
     let {
         songs = [],
@@ -98,7 +99,9 @@ import { toUrl } from '@/lib/utils';
                         <th scope="col" class="px-6 py-3 font-semibold text-center">الاستماع</th>
                         <th scope="col" class="px-6 py-3 font-semibold">مزود الخدمة</th>
                         <th scope="col" class="px-6 py-3 font-semibold">طريقة الاشتراك اليدوي</th>
+                        <th scope="col" class="px-6 py-3 font-semibold">الحالة</th>
                         <th scope="col" class="px-6 py-3 font-semibold text-center">الاشتراك السريع</th>
+                        <th scope="col" class="px-6 py-3 font-semibold text-center">العمليات</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 dark:divide-zinc-800">
@@ -128,6 +131,18 @@ import { toUrl } from '@/lib/utils';
                             <td class="px-6 py-4 font-mono tracking-wider">
                                 {song.subscription_detail}
                             </td>
+                            <td class="px-6 py-4 font-mono tracking-wider">
+                            {#if song.is_active}
+                                <Badge class="bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300">
+                                    متاح
+                                </Badge>
+                                <!-- <span class="text-green-600 dark:text-green-400 font-semibold">متاح</span> -->
+                            {:else}
+                                <Badge class="bg-red-50 text-red-700 dark:bg-red-950 dark:text-red-300">
+                                    غير متاح
+                                </Badge>
+                            {/if}
+                            </td>
                             <!-- <td class="px-6 py-4 text-xs text-gray-600 dark:text-gray-400 max-w-xs">
                                 إرسال <span class="font-mono bg-gray-100 dark:bg-zinc-800 px-1 py-0.5 rounded font-bold text-gray-800 dark:text-zinc-200">{song.fast_subscription}</span> إلى <span class="font-mono text-blue-600 font-bold">1717</span> ثم قم بإرسال الرسالة
                             </td> -->
@@ -136,6 +151,21 @@ import { toUrl } from '@/lib/utils';
                                     onclick={() => quickSubscribe(song.code, song.title)}
                                     class="inline-flex items-center gap-1 bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/40 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 text-xs font-semibold px-3 py-1.5 rounded-lg border border-blue-200 dark:border-blue-900 transition-all">
                                     <span>اضغط لإرسال الرسالة</span>
+                                </button>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <Link href={toUrl(dashboardEdit(song.id))}>
+                                    <button class="cursor-pointer inline-flex items-center gap-1 bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/40 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 text-xs font-semibold px-3 py-1.5 rounded-lg border border-blue-200 dark:border-blue-900 transition-all">
+                                        <span>تعديل</span>
+                                    </button>
+                                </Link>
+                                <!-- Delete Button -->
+                                <button
+                                    type="button"
+                                    onclick={() => dashboardDestroy(song.id)}
+                                    class="cursor-pointer inline-flex items-center gap-1 bg-red-50 hover:bg-red-100 dark:bg-red-950/40 dark:hover:bg-red-900/60 text-red-600 dark:text-red-400 text-xs font-semibold px-3 py-1.5 rounded-lg border border-red-200 dark:border-red-900 transition-all"
+                                >
+                                    <span>حذف</span>
                                 </button>
                             </td>
                         </tr>
