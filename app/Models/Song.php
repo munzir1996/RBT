@@ -11,7 +11,7 @@ class Song extends Model
 
     protected $fillable = [
         'title', 'song_no', 'link', 'subscription_detail', 'fast_subscription', 'artist_id', 'sim_id', 'is_active'
-        ];
+    ];
 
     /**
      * The relationships that should be lazy loaded.
