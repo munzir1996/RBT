@@ -29,7 +29,7 @@
     } = $props();
 </script>
 
-<AppHead title="Log in" />
+<AppHead title="Login" />
 
 {#if status}
     <div class="mb-4 text-center text-sm font-medium text-green-600">

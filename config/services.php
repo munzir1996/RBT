@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'google' => [
+        'analytics_id' => env('VITE_GA_MEASUREMENT_ID'),
+    ],
+
 ];

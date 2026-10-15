@@ -43,7 +43,7 @@ import { Form } from "@inertiajs/svelte";
     }
 
     function handleDelete(id: number) {
-        if (confirm('هل أنت تأكد من حذف هذه الشريحة')) {
+        if (confirm('هل أنت متأكد من حذف هذه الشريحة')) {
             router.delete(toUrl(simsDestroy(id)));
         }
     }

@@ -237,7 +237,7 @@
                                 type="radio"
                                 name="is_active"
                                 value="1"
-                                checked={song.is_active === 1}
+                                checked={song.is_active == 1}
                             />
                             مفعل (متاح)
                         </label>
@@ -246,7 +246,7 @@
                                 type="radio"
                                 name="is_active"
                                 value="0"
-                                checked={song.is_active === 0}
+                                checked={song.is_active == 0}
                             />
                             غير مفعل (غير متاح)
                         </label>
